@@ -67,7 +67,7 @@ public class BankAccount {
     }
 
     private void printWithdrawPrompt() {
-        System.out.print("\nHow much would you like to withdraw?\n\n$");
+        System.out.print("\nHow much would you like to withdraw?\n\n    $");
     }
 
     private void printInvalidAmountMessage() {
@@ -109,7 +109,7 @@ public class BankAccount {
     }
 
     private void printDepositPrompt() {
-        System.out.print("\nHow much would you like to deposit?\n\n$");
+        System.out.print("\nHow much would you like to deposit?\n\n $");
     }
 
     private void printDepositTooSmallMessage() {

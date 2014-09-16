@@ -50,6 +50,29 @@ public class AtmInterface {
         return operationNumber < lowValidOperationNumber || operationNumber > highValidOperationNumber;
     }
 
+    public static boolean wantToContinue() {
+        if (getContinueResponse() == 42) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static int getContinueResponse() {
+        try {
+            askIfWantToContinue();
+            return userInput.nextInt();
+        }
+        catch (InputMismatchException e) {
+            return 0;
+        }
+    }
+
+    private static void askIfWantToContinue() {
+        System.out.println("\nType \"42\" if you would like to continue.\n" +
+                           "Type anything else to quit.");
+    }
+
     private static void clearBuffer() {
         userInput.nextLine();
     }
