@@ -19,14 +19,30 @@ public class AtmInterface {
 
     public static int getTransactionNumber() {
         try {
-            return userInput.nextInt();
+            int transactionNum = userInput.nextInt();
+            if (isInvalidOperationNum(transactionNum)) {
+                printOutOfRangeOperationMessage();
+                promptForTransaction();
+                return getTransactionNumber();
+            } else {
+                return transactionNum;
+            }
+
         }
         catch (InputMismatchException e) {
-            System.out.println("\n Sorry, only " + lowValidOperationNumber + " - " + highValidOperationNumber + " are valid selections.");
+            printOutOfRangeOperationMessage();
             promptForTransaction();
             clearBuffer();
             return getTransactionNumber();
         }
+    }
+
+    private static void printOutOfRangeOperationMessage() {
+        System.out.println("\n Sorry, only " + lowValidOperationNumber + " - " + highValidOperationNumber + " are valid selections.");
+    }
+
+    private static boolean isInvalidOperationNum(int operationNumber) {
+        return operationNumber < lowValidOperationNumber || operationNumber > highValidOperationNumber;
     }
 
     private static void clearBuffer() {
