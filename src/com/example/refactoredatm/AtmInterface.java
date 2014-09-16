@@ -8,7 +8,12 @@ public class AtmInterface {
     private static int lowValidOperationNumber = 1;
     private static int highValidOperationNumber = 3;
 
-    public static void promptForTransaction() {
+    public static int promptAndGetTransactionNumber() {
+        promptForTransaction();
+        return getTransactionNumber();
+    }
+
+    private static void promptForTransaction() {
         System.out.print("\n" +
                 "What would you like to do?\n" +
                 "\n" +
@@ -17,7 +22,7 @@ public class AtmInterface {
                 "  3.) Deposit funds\n\n");
     }
 
-    public static int getTransactionNumber() {
+    private static int getTransactionNumber() {
         try {
             int transactionNum = userInput.nextInt();
             if (isInvalidOperationNum(transactionNum)) {
